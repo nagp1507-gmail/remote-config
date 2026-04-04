@@ -1,0 +1,11 @@
+server:
+  servlet:
+    context-path: /customer
+  port: 8181
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8081/realms/nagarro_ecommerce
