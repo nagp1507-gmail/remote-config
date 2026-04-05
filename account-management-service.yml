@@ -1,6 +1,6 @@
 server:
   servlet:
-    context-path: /account
+    context-path: /v1/account
   port: 8182
 
 spring:
