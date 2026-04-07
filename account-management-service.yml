@@ -19,8 +19,10 @@ springdoc:
 grpc:
   server:
     port: 9090
-      interceptors:
-        - net.devh.boot.grpc.server.tracing.TracingServerInterceptor
+    interceptors:
+      - net.devh.boot.grpc.server.tracing.TracingServerInterceptor
+    security:
+      enabled: true
 
 eureka:
   client:
