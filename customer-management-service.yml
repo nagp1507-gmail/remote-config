@@ -16,6 +16,9 @@ grpc:
       address: 'discovery:///ACCOUNT-MANAGEMENT-SERVICE'
       negotiation-type: plaintext
       lazy-initialization: true
+      interceptors:
+        - net.devh.boot.grpc.client.tracing.TracingClientInterceptor
+        - net.devh.boot.grpc.server.tracing.TracingServerInterceptor
 
 eureka:
   instance:
