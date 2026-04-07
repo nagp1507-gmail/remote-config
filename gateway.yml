@@ -1,6 +1,55 @@
 spring:
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: http://localhost:8081/realms/nagarro
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: account-management-service
+              uri: lb://ACCOUNT-MANAGEMENT-SERVICE
+              predicates:
+                - Path=/v1/accounts/**
+
+            - id: account-grpc-route
+              uri: lb://ACCOUNT-MANAGEMENT-SERVICE
+              predicates:
+                - Path=/com.nagarro.bank.account.grpc.AccountGrpcService/**
+              metadata:
+                option: h2c
+
+            - id: customer-management-service
+              uri: lb://CUSTOMER-MANAGEMENT-SERVICE
+              predicates:
+                - Path=/v1/customers/**
+
+  zipkin:
+    base-url: http://localhost:9411/
+    sender:
+      type: web
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+server:
+  netty:
+    connection-timeout: 2s
+    http2:
+      enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, gateway, health, info
+  endpoint:
+    gateway:
+      access: unrestricted
+
+logging:
+  level:
+    org.springframework.cloud.gateway: TRACE
+    org.springframework.http.server.reactive: DEBUG
+    org.springframework.web.server.adapter.HttpWebHandlerAdapter: TRACE
