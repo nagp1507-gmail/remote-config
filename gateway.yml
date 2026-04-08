@@ -73,4 +73,4 @@ logging:
     org.springframework.http.server.reactive: DEBUG
     org.springframework.web.server.adapter.HttpWebHandlerAdapter: TRACE
   pattern:
-    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %5p [%X{traceId:-},%X{spanId:-}] %logger{36} - %msg%n"
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %5p traceId:%X{traceId:-} spanId:%X{spanId:-} correlationId:%X{X-Correlation-ID:-} %logger{36} - %msg%n"
