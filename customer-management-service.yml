@@ -11,6 +11,10 @@ spring:
       type: web
 
 grpc:
+  server:
+    port: 9090
+    interceptors:
+      - net.devh.boot.grpc.server.tracing.TracingServerInterceptor
   client:
     account-grpc-service:
       address: 'discovery:///ACCOUNT-MANAGEMENT-SERVICE'
@@ -18,7 +22,6 @@ grpc:
       lazy-initialization: true
       interceptors:
         - net.devh.boot.grpc.client.tracing.TracingClientInterceptor
-        - net.devh.boot.grpc.server.tracing.TracingServerInterceptor
 
 eureka:
   instance:
