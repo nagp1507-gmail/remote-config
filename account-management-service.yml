@@ -22,7 +22,7 @@ grpc:
     interceptors:
       - net.devh.boot.grpc.server.tracing.TracingServerInterceptor
   client:
-    account-grpc-service:
+    customer-grpc-service:
       address: 'discovery:///CUSTOMER-MANAGEMENT-SERVICE'
       negotiation-type: plaintext
       lazy-initialization: true
