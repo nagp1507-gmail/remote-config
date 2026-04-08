@@ -21,6 +21,13 @@ grpc:
     port: 9090
     interceptors:
       - net.devh.boot.grpc.server.tracing.TracingServerInterceptor
+  client:
+    account-grpc-service:
+      address: 'discovery:///CUSTOMER-MANAGEMENT-SERVICE'
+      negotiation-type: plaintext
+      lazy-initialization: true
+      interceptors:
+        - net.devh.boot.grpc.client.tracing.TracingClientInterceptor
 
 eureka:
   client:
