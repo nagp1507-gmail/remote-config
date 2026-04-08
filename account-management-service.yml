@@ -64,4 +64,4 @@ logging:
     org.springframework.security: DEBUG
     org.springframework.security.oauth2: DEBUG
   pattern:
-    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %5p [%X{traceId:-},%X{spanId:-}] %logger{36} - %msg%n"
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %5p traceId:%X{traceId:-} spanId:%X{spanId:-} correlationId:%X{X-Correlation-ID:-} %logger{36} - %msg%n"
