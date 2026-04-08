@@ -49,3 +49,10 @@ management:
   observations:
     enable:
       jdbc: true
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.security.oauth2: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %5p traceId:%X{traceId:-} spanId:%X{spanId:-} correlationId:%X{X-Correlation-ID:-} %logger{36} - %msg%n"
