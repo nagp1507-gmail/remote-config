@@ -35,7 +35,9 @@ management:
       enabled: true
     readinessstate:
       enabled: true
-
+  tracing:
+    propagation:
+      type: W3C
   endpoints:
     web:
       exposure:
