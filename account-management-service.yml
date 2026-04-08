@@ -56,10 +56,13 @@ management:
     web:
       exposure:
         include: health, info
+  observations:
+    enable:
+      jdbc: true
 
 logging:
   level:
     org.springframework.security: DEBUG
     org.springframework.security.oauth2: DEBUG
   pattern:
-    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %5p [%X{traceId:-},%X{spanId:-}] %logger{36} - %msg%n"
