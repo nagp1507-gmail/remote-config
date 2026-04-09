@@ -27,7 +27,8 @@ spring:
                 - Path=/com.nagarro.bank.customer.grpc.CustomerGrpcService/**
               metadata:
                 option: h2c
-
+  reactor:
+    context-propagation: auto
   zipkin:
     tracing:
       endpoint: http://localhost:9411/api/v2/spans
@@ -62,10 +63,21 @@ management:
       exposure:
         include: refresh, gateway, health, info
     gateway:
+      enabled: true
       access: unrestricted
   observations:
+    http:
+      server:
+        requests:
+          name: http.server.requests
     enable:
       jdbc: true
+  metrics:
+    web:
+      server:
+        request:
+          autotime:
+            enabled: true
 
 logging:
   level:
