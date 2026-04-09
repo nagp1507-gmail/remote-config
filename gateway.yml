@@ -72,12 +72,6 @@ management:
           name: http.server.requests
     enable:
       jdbc: true
-  metrics:
-    web:
-      server:
-        request:
-          autotime:
-            enabled: true
 
 logging:
   level:
